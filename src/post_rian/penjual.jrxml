@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<subDataset name="New Dataset 1">
+		<queryString language="SQL">
+			<![CDATA[SELECT 
+	barang.nama_barang, 
+	barang.harga_jual, 
+	transaksi.jumlah, 
+	barang.harga_beli, 
+	barang.satuan, 
+	transaksi.total,  
+	transaksi.barang_id, 
+	barang.kode, 
+	barang.id
+FROM
+	barang
+	INNER JOIN
+	transaksi
+	ON 
+		barang.id = transaksi.barang_id]]>
+		</queryString>
+		<field name="nama_barang" class="java.lang.String"/>
+		<field name="harga_jual" class="java.lang.String"/>
+		<field name="jumlah" class="java.lang.String"/>
+		<field name="harga_beli" class="java.lang.String"/>
+		<field name="satuan" class="java.lang.String"/>
+		<field name="total" class="java.lang.String"/>
+		<field name="barang_id" class="java.lang.Integer"/>
+		<field name="kode" class="java.lang.String"/>
+		<field name="id" class="java.lang.Integer"/>
+		<group name="id">
+			<groupExpression><![CDATA[$F{id}]]></groupExpression>
+		</group>
+	</subDataset>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="245" splitType="Stretch">
+			<componentElement>
+				<reportElement x="32" y="24" width="360" height="200"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="New Dataset 1">
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource(1)]]></dataSourceExpression>
+					</datasetRun>
+					<jr:column width="90">
+						<jr:tableHeader height="30"/>
+						<jr:tableFooter height="30"/>
+						<jr:columnHeader height="30"/>
+						<jr:columnFooter height="30"/>
+						<jr:detailCell height="20"/>
+					</jr:column>
+					<jr:column width="90">
+						<jr:tableHeader height="30"/>
+						<jr:tableFooter height="30"/>
+						<jr:columnHeader height="30"/>
+						<jr:columnFooter height="30"/>
+						<jr:detailCell height="20"/>
+					</jr:column>
+					<jr:column width="90">
+						<jr:tableHeader height="30"/>
+						<jr:tableFooter height="30"/>
+						<jr:columnHeader height="30"/>
+						<jr:columnFooter height="30"/>
+						<jr:detailCell height="20"/>
+					</jr:column>
+					<jr:column width="90">
+						<jr:tableHeader height="30"/>
+						<jr:tableFooter height="30"/>
+						<jr:columnHeader height="30"/>
+						<jr:columnFooter height="30"/>
+						<jr:detailCell height="20"/>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
